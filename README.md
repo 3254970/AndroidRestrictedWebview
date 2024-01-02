@@ -26,7 +26,7 @@ To configure this, follow these steps:
 1. In the `MainActivity.kt` file, locate the line 32 containing the `FORCE_PORTRAIT` constant.
 2. Replace the value of the `ORIENTATION_MODE` constant to `OrientationMode.PORTRAIT` to enforce portrait mode or `OrientationMode.AUTO` to allow the system and user preferences to determine the screen orientation.
    ```kotlin
-   private const val FORCE_PORTRAIT = false // Change this value to true or false
+        private val ORIENTATION_MODE = OrientationMode.AUTO //Chose between AUTO, PORTRAIT or LANDSCAPE
    ```
 3. Save the changes.
 
