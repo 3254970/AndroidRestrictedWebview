@@ -21,11 +21,15 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
+enum class OrientationMode {
+    PORTRAIT, LANDSCAPE, AUTO
+}
+
 class MainActivity : Activity() {
     companion object {
-        private val ALLOWED_DOMAINS = listOf("hadass.site", "ko-fi.com") // Liste de domaines autorisés
+        private val ALLOWED_DOMAINS = listOf("hadass.site", "ko-fi.com") // List of allowed domains
         private const val STORAGE_PERMISSION_CODE = 1
-        private const val FORCE_PORTRAIT = false // True = force portrait mode
+        private val ORIENTATION_MODE = OrientationMode.AUTO //Chose between AUTO, PORTRAIT or LANDSCAPE
     }
 
     private lateinit var webView: WebView
@@ -64,8 +68,10 @@ class MainActivity : Activity() {
         }
         super.onCreate(savedInstanceState)
 
-        if (FORCE_PORTRAIT) {
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        when (ORIENTATION_MODE) {
+            OrientationMode.PORTRAIT -> requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            OrientationMode.LANDSCAPE -> requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            OrientationMode.AUTO -> requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         }
 
         setContentView(R.layout.activity_main)
@@ -104,8 +110,10 @@ class MainActivity : Activity() {
                 window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
                 customViewCallback?.onCustomViewHidden()
                 customViewCallback = null
-                if (FORCE_PORTRAIT) {
-                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                when (ORIENTATION_MODE) {
+                    OrientationMode.PORTRAIT -> requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                    OrientationMode.LANDSCAPE -> requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                    OrientationMode.AUTO -> requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 }
             }
         }
