@@ -7,11 +7,11 @@ The Android Restricted WebView is an Android application template that allows yo
 To configure the application and set the allowed website, follow these steps:
 
 1. Open the project in Android Studio.
-2. Navigate to the `MainActivity.java` file.
+2. Navigate to the `MainActivity.kt` file.
 3. Locate the line 33 containing the `ALLOWED_URL` constant.
-4. Replace the value of the `ALLOWED_URL` constant with the desired URL for the allowed site.
-   ```java
-   private static final String ALLOWED_URL = "www.example.com";
+4. Replace the value of the `ALLOWED_DOMAINS` constant with the desired Domains for the allowed site.
+   ```kotlin
+    private val ALLOWED_DOMAINS = listOf("hadass.site", "ko-fi.com") 
    ```
 5. Save the changes.
 
@@ -25,8 +25,8 @@ To configure this, follow these steps:
 
 1. In the `MainActivity.java` file, locate the line 34 containing the `FORCE_PORTRAIT` constant.
 2. Replace the value of the `FORCE_PORTRAIT` constant to `true` to enforce portrait mode or `false` to allow the system and user preferences to determine the screen orientation.
-   ```java
-   private static final boolean FORCE_PORTRAIT = true; // Change this value to true or false
+   ```kotlin
+   private const val FORCE_PORTRAIT = false // Change this value to true or false
    ```
 3. Save the changes.
 
