@@ -84,7 +84,7 @@ class MainActivity : Activity() {
         setupWebViewClient()
         setupDownloadListener()
 
-        webView.loadUrl("https://" + ALLOWED_DOMAINS.first())
+        webView.loadUrl("https://www.swgraficstlatmeimad.023.co.il" + ALLOWED_DOMAINS.first())
     }
 
     private fun setupWebChromeClient() {
